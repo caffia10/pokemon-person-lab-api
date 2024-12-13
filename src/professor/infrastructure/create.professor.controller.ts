@@ -8,8 +8,8 @@ interface CreateProfessorRequest {
   laboratoryDesigned: string;
 }
 
-@Controller('professors')
-export class ProfessorController {
+@Controller('professors/create')
+export class CreateProfessorController {
   constructor(
     @Inject(CreateProfessorUseCase)
     private readonly createProfessorUseCase: CreateProfessorUseCase,
@@ -17,7 +17,7 @@ export class ProfessorController {
   ) {}
 
   @Post()
-  async create(
+  async handle(
     @Body() createProfessorRequest: CreateProfessorRequest,
   ): Promise<void> {
     this.createProfessorUseCase.do(createProfessorRequest);

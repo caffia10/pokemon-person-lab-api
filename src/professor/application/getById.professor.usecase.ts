@@ -1,25 +1,25 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { Professor } from '../domain/professor.model';
-import { CreateProfessorUseCase } from './usecases.interfaces';
+import { GetByIdProfessorUseCase } from './usecases.interfaces';
 import { ProfessorRepository } from '../domain/professor.repository';
 import pino from 'pino';
 
 @Injectable()
-export class DefaultCreateProfessorUseCase implements CreateProfessorUseCase {
+export class DefaultGetByIdProfessorUseCase implements GetByIdProfessorUseCase {
   constructor(
     @Inject(ProfessorRepository)
     private readonly repository: ProfessorRepository,
     @Inject('LOGGER') private readonly logger: pino.Logger,
   ) {}
 
-  async do(professor: Professor): Promise<void> {
-    await this.repository.create(professor);
+  async do(id: string): Promise<Professor> {
+    const profesor = await this.repository.getById(id);
     this.logger.info(
       {
-        name: professor.name,
-        laboratoryDesigned: professor.laboratoryDesigned,
+        id: id,
       },
-      'profesor created',
+      'profesor founded',
     );
+    return profesor;
   }
 }
