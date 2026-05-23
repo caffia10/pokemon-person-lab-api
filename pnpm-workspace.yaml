@@ -1,0 +1,16 @@
+allowBuilds:
+  '@nestjs/core': true
+minimumReleaseAgeExclude:
+  - tmp@0.2.4
+  - glob@10.5.0
+  - webpack@5.104.1
+  - webpack@5.104.0
+  - multer@2.1.0
+  - ajv@8.18.0
+  - multer@2.1.1
+  - file-type@21.3.1
+  - file-type@21.3.2
+  - picomatch@4.0.4
+  - '@nestjs/core@11.1.18'
+  - uuid@11.1.1
+  - qs@6.15.2
